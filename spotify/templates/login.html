@@ -22,34 +22,27 @@
             <div>
                 {% if messages %}
                     {% for message in messages %}
-                        {% if message.SUCCESS %} 
-                            <div class="alert alert-success" role="alert">{{ message }}</div>
-                        {% else %}
+                        {% if "error" in message.tags %}
                             <div class="alert alert-danger" role="alert">{{ message }}</div>
+                        {% else %}
+                            <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
                         {% endif %}
                     {% endfor %}
                 {% endif %}
 
-                <!-- {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-danger" role="alert">{{ message }}</div>
-                    {% endfor %}
-                {% endif %} -->
-
                 <form action="{% url 'login_validate' %}" method="post"> 
                     {% csrf_token %}
-                    <label for="user" class="text-white fw-bold">Email or username</label>
+                    <span class="text-white fw-bold">Email or username</span>
                     <br>
                     <input type="text" name="user" placeholder="Email or username" required>
 
                     <br> <br>
 
-                    <label for="password" class="text-white fw-bold">Password</label>
+                    <span class="text-white fw-bold">Password</span>
                     <br>
                     <input type="password" name="password" placeholder="Password" required>
                     <br> <br>
 
-                    <!-- <input type="submit" value="Log In" class="fw-bold btn btn-success active" aria-pressed="true" style="filter: brightness(1.95);"> -->
                     <input type="submit" value="Log In" class="fw-bold">
                 </form>
             </div>
@@ -57,13 +50,24 @@
             <br><br>
 
             <div id="sub-container">
-                <a href="" class="text-white">Forget your password?</a>
+                <a href="{% url 'reset_password' %}" class="text-white">Forget your password?</a>
 
                 <br><br>
 
                 <span class="text-white-50">Don't have an account?</span>
-                <a href="" class="text-white">Sign up for Spotify</a>
+                <a href="{% url 'sign_up' %}" class="text-white">Sign up for Spotify</a>
             </div>
         </div>
+
+        <!-- <script>
+            // Automatically clear messages after 30 seconds
+            setTimeout(function () {
+                var messages = document.querySelectorAll('.alert');
+                messages.forEach(function (message) {
+                    message.style.display = 'none'; // Hides the message after 30 seconds
+                });
+            }, 30000);
+        </script> -->
+        
     </body>
 </html>

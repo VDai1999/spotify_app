@@ -3,11 +3,7 @@ body {
     margin: 0;
 }
 
-hr.solid {
-    border-top: 2px solid #bbb;
-}
-
-input[type="text"], input[type="submit"], input[type="password"]{
+input[type="text"], input[type="submit"]{
     width: 100%; /* Make the input fields responsive */
     max-width: 600px; /* Set a maximum width */
     min-width: 350px;
@@ -16,7 +12,11 @@ input[type="text"], input[type="submit"], input[type="password"]{
     color: white;
 }
 
-input[type="text"], input[type="password"] {
+#error-message {
+    max-width: 350px; /* Adjust this value as needed */
+}
+
+input[type="text"] {
     border: 1px solid #bbb;
     background-color: black;
 }
@@ -51,12 +51,12 @@ input[type="submit"] {
     text-align: center;
 }
 
-input[type="text"]:hover {
+input[type="text"]:hover, input[type="password"]:hover {
     border-color: white; /* Change border color on hover */
     /* background-color: rgba(118, 199, 192, 0.1); */
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus, input[type="password"]:focus {
     color: white;
     outline: none;  
     border: 2px solid white;

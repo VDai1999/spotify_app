@@ -1,0 +1,120 @@
+body {
+    background-color: #161616;
+    margin: 0;
+}
+
+#error-message {
+    max-width: 350px; /* Adjust this value as needed */
+}
+
+input[type="password"] {
+    border: 1px solid #bbb;
+    background-color: black;
+}
+
+#logo {
+    width: 75px;
+    height: 75px;
+}
+
+#main-container {
+    background-color: black;
+}
+
+input[type="submit"] {
+    border-radius: 30px;
+    background-color: #1DB954;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column; /* Align elements in a column */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 80%;
+    width: 50%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+#sub-container {
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+input[type="text"]:hover, input[type="password"]:hover {
+    border-color: white; /* Change border color on hover */
+    /* background-color: rgba(118, 199, 192, 0.1); */
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    color: white;
+    outline: none;  
+    border: 2px solid white;
+}
+
+input[type="submit"]:hover {
+    transform: scale(1.05);
+    background-color: #27db66;
+}
+
+input[type="text"]:hover, input[type="password"]:hover {
+    border-color: white; /* Change border color on hover */
+    /* background-color: rgba(118, 199, 192, 0.1); */
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    color: white;
+    outline: none;  
+    border: 2px solid white;
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Create a custom circular checkbox */
+.custom-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 15px; /* Adjust size as needed */
+    height: 15px; /* Adjust size as needed */
+    border-radius: 50%; /* Make it circular */
+    border: 1px solid white; /* Border color */
+    background-color: black; /* Background color */
+    cursor: pointer; /* Pointer cursor */
+    margin-right: 8px; /* Space between checkbox and label */
+}
+
+/* Change the appearance when checked */
+input[type="checkbox"]:checked + .custom-checkbox {
+    background-color: green; /* Background color when checked */
+}
+
+/* Add a checkmark */
+input[type="checkbox"]:checked + .custom-checkbox::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px; /* Size of the checkmark */
+    height: 10px; /* Size of the checkmark */
+    background-color: green; /* Color of the checkmark */
+    border: green;
+    border-radius: 50%; /* Make it circular */
+    transform: translate(-50%, -50%); /* Center the checkmark */
+}
+
+/* When the screen width is below 800px, remove the background */
+@media (max-width: 800px) {
+    body {
+        background-color: black; /* Same as main div to "hide" background */
+    }
+
+    #main-container {
+        width: 90%; /* Make the container take up more width */
+        height: auto; /* Adjust height for smaller screens */
+        margin-top: 5%; /* Increase margin from top */
+    }
+}
