@@ -3,11 +3,7 @@ body {
     margin: 0;
 }
 
-#error-message {
-    max-width: 350px; /* Adjust this value as needed */
-}
-
-input[type="password"] {
+input[type="password"], input[type="text"] {
     border: 1px solid #bbb;
     background-color: black;
 }
@@ -21,7 +17,7 @@ input[type="password"] {
     background-color: black;
 }
 
-input[type="submit"] {
+input[type="submit"], button {
     border-radius: 30px;
     background-color: #1DB954;
 }
@@ -42,9 +38,17 @@ input[type="submit"] {
     text-align: center;
 }
 
+input[type="text"], input[type="submit"], button {
+    width: 100%; /* Make the input fields responsive */
+    max-width: 600px; /* Set a maximum width */
+    min-width: 350px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: white;
+}
+
 input[type="text"]:hover, input[type="password"]:hover {
     border-color: white; /* Change border color on hover */
-    /* background-color: rgba(118, 199, 192, 0.1); */
 }
 
 input[type="text"]:focus, input[type="password"]:focus {
@@ -53,9 +57,9 @@ input[type="text"]:focus, input[type="password"]:focus {
     border: 2px solid white;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, button:hover {
     transform: scale(1.05);
-    background-color: #27db66;
+    background-color: #1ed760;
 }
 
 input[type="text"]:hover, input[type="password"]:hover {
@@ -104,6 +108,11 @@ input[type="checkbox"]:checked + .custom-checkbox::after {
     border: green;
     border-radius: 50%; /* Make it circular */
     transform: translate(-50%, -50%); /* Center the checkmark */
+}
+
+.radio-button {
+    color: white;
+    margin-right: 30px;
 }
 
 /* When the screen width is below 800px, remove the background */

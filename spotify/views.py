@@ -68,18 +68,28 @@ def sign_up_email(request):
             return render(request, 'signup.html')  # Render the signup page again with the warning message
         
         # If email is valid and doesn't exist, redirect to the next step (password signup) and pass the email
-        next_url = reverse('sign_up_password')
-        query_string = urlencode({'email': email})  # Create query string
-        return HttpResponseRedirect(f'{next_url}?{query_string}')
+        # next_url = reverse('sign_up_form')
+        # query_string = urlencode({'email': email})  # Create query string
+        # return HttpResponseRedirect(f'{next_url}?{query_string}')
+        request.session['email'] = email
+        
+        # Redirect to the form to sign up
+        return redirect("sign_up_form")
 
-    # If GET request, render the signup form
     return render(request, 'signup.html')
 
-def sign_up_password(request):
-    email = request.GET.get('email', None)
+def sign_up_form(request):
+    # email = request.GET.get('email', None)
+    # Retrieve the email from the session
+    email = request.session.get('email')
+
+    if email is None:
+        # If the email is not found, redirect back to the signup page
+        messages.error(request, "Session expired or email not provided.")
+        return redirect('sign_up')
 
     # Render the signup password page
-    return render(request, 'signup_password.html', {'email': email})
+    return render(request, 'signup_form.html', {'email': email})
 
 def reset_password(request):
     # Render the signup password page

@@ -1,0 +1,349 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign up - Spotify</title>
+    <link rel="icon" href="https://accounts.scdn.co/sso/images/favicon.ace4d8543bbb017893402a1e9d1ac1fa.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/signup_form.css' %}">
+
+</head>
+
+<body>
+    <div id="main-container">
+        <!-- Spotify Logo -->
+        <img src="{% static 'img/spotify_logo.jpg' %}" id="logo" alt="Spotify Logo">
+
+        <!-- Progress Bar -->
+        <div class="progress" style="width: 70%; height: 5px">
+            <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 33.33%" aria-valuenow="33.33" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <br>
+
+        <table border="0" style="width: 70%;">
+            <tr>
+                <td style="font-size: 40px; padding-left: 10px; width: 65px;" class="text-white-50">
+                    <a href="#" id="back-link" class="text-white-50" style="text-decoration: none;" onclick="handleBackLink()">&lt;</a>
+                </td>
+                <td>
+                    <span class="text-white-50" id="step-number">Step 1 of 3</span>
+                    <br>
+                    <span class="text-white fw-bold" id="step-description">Create a password</span>
+                </td>
+            </tr>
+        </table>
+
+        <div id="error-message" style="margin-left: -100px;">
+        </div>
+
+        <!-- Multi-Step Form -->
+        <form id="signup-form" action="{% url 'sign_up_email' %}" method="post" onsubmit="return validateAllSteps()">
+            {% csrf_token %}
+            {% if email %}
+                <!-- <input type="hidden" name="email" value="{{ email }}"> -->
+                <input type="text" name="email" value="{{ email }}" hidden>
+            {% endif %}
+
+            <!-- Step 1: Create Password -->
+            <div id="step-1">
+                <!-- <span class="text-white-50">Step 1 of 3</span>
+                <br>
+                <span class="text-white fw-bold">Create a password</span> -->
+                <br>
+
+                <span class="text-white fw-bold">Password</span>
+                <br>
+                <input type="password" name="password" id="password" required oninput="validatePassword()" size="40">
+                <br> <br>
+
+                <div>
+                    <span class="text-white fw-bold">Your password must contain at least:</span>
+                    <br>
+
+                    <label>
+                        <input type="checkbox" id="letter-criteria" name="option" disabled>
+                        <span class="custom-checkbox"></span>
+                        <span class="text-white">1 letter</span>
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" id="number-special-criteria" name="option" disabled>
+                        <span class="custom-checkbox"></span>
+                        <span class="text-white">1 number or special character (example: # ? ! &)</span>
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" id="length-criteria" name="option" disabled>
+                        <span class="custom-checkbox"></span>
+                        <span class="text-white">10 characters</span>
+                    </label>
+                </div>
+                <br>
+                <button type="button" onclick="nextStep()">Next</button>
+            </div>
+
+            <!-- Step 2: Additional Questions -->
+            <div id="step-2" style="display: none; margin-bottom: 5%;">
+                <!-- <span class="text-white-50">Step 2 of 3</span>
+                <br>
+                <span class="text-white fw-bold">Tell us about yourself</span> -->
+                <br>
+
+                <span class="text-white fw-bold">Name</span>
+                <br>
+                <span class="text-white-50">This name will appear on your profile</span>
+                <br>
+                <input type="text" name="name" style="background-color: black; border: 1px solid #bbb;" required>
+                <br> <br>
+
+                <span class="text-white fw-bold">What's your birthdate?</span>
+                <br>
+                <input type="date" name="birthdate" id="birthdate" min="1900-01-01" max="" size="40" required>
+                <br> <br>
+
+                <span class="text-white fw-bold">Gender</span>
+                <br>
+                <span class="text-white-50">We use your gender to help personalize our <br> content recommendations and ads for you</span>
+                <br>
+                <input type="radio" name="gender" id="man" value="man" />
+                <label for="man" class="radio-button">Man</label>
+
+                <input type="radio" name="gender" id="woman" value="woman" />
+                <label for="woman"  class="radio-button">Woman</label>
+
+                <input type="radio" name="gender" id="non_binary" value="non_binary" />
+                <label for="non_binary" class="radio-button">Non-binary</label>
+                <br>
+
+                <input type="radio" name="gender" id="something_else" value="something_else" />
+                <label for="something_else"  class="radio-button">Something else</label>
+
+                <input type="radio" name="gender" id="prefer_not_to_say" value="prefer_not_to_say" />
+                <label for="prefer_not_to_say"  class="radio-button">Prefer not to say</label>
+
+                <br>
+                <!-- <button type="button" class="btn btn-secondary" onclick="previousStep()">Previous</button> -->
+                <button type="button" onclick="nextStep()">Next</button>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div id="step-3" class="form-step" style="display: none;">
+                <!-- <span class="text-muted">Step 3 of 3</span>
+                <h2 class="fw-bold">Confirm Your Details</h2> -->
+                <br>
+
+                <input type="checkbox" id="news-update" name="news_update" value="yes">
+                <label class="text-white" for="news-update">Please send me news and offers from Spotify</label>
+                <br>
+
+                <input type="checkbox" id="share-info" name="share_info" value="yes">
+                <label class="text-white" for="share-info">Share my registration data with Spotify's content providers for marketing purposes</label>
+              
+                <br><br>
+
+
+                <div class="text-white">
+                    By clicking on sign-up, you agree to Spotify's <a href="" target="_blank" style="color: #169f47;">Terms and Conditions of Use</a>.
+                </div>
+
+                <div class="text-white">
+                    To learn more about how Spotify collects, uses, shares and protects your personal data, please see <a href="" target="_blank" style="color: #169f47;">Spotify's Privacy Policy</a>.
+                </div>
+
+                <br>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const today = new Date().toISOString().split('T')[0]; // Get today's date in the format YYYY-MM-DD
+            document.getElementById('birthdate').setAttribute('max', today); // Set the max attribute
+        };
+
+        let currentStep = 1;
+        const totalSteps = 3;
+        const stepDesriptions = ["Create a password", "Tell us about yourself", "Confirm Your Details"];
+
+        // Function to show a specific step
+        function showStep() {
+            // Clear all alerts
+            clearAlerts();
+
+            // Update the step number
+            document.getElementById("step-number").innerHTML = `Step ${currentStep} of 3`;
+
+            // Update the step description
+            document.getElementById("step-description").innerHTML = stepDesriptions[currentStep - 1];
+
+            // Update the progress bar
+            const progressPercentage = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercentage}%`;
+            document.getElementById('progress-bar').setAttribute('aria-valuenow', progressPercentage.toFixed(2));
+            // console.log(`progressPercentage: ${progressPercentage}`);
+            
+            // Update the href attribute to navigate back the prevoious page
+            // if (currentStep == 1) {
+            //     document.getElementById('back-link').href = "{% url 'sign_up' %}"; 
+            // } else {
+            //     document.getElementById('back-link').href = "javascript:void(0);";
+            // }
+
+            // document.getElementById(`step-${step}`).style.display = (i === step) ? 'block' : 'none';
+            
+            // <a id="back-link" href="{% url 'sign_up' %}" class="text-white-50" style="text-decoration: none;" onclick="previousStep()">&lt;</a>
+            // <!-- <a href="javascript:void(0);" class="text-white-50" style="text-decoration: none;" onclick="previousStep()">&lt;</a> -->
+
+            for (let i = 1; i <= totalSteps; i++) {
+                document.getElementById(`step-${i}`).style.display = (i === currentStep) ? 'block' : 'none';
+            }
+        }
+
+        // Function to handle navigation to the previous page
+        function handleBackLink() {
+            if (currentStep === 1) {
+                // Navigate to the signup page if on the first step
+                window.location.href = "{% url 'sign_up' %}";
+            } else {
+                // Otherwise, go to the previous step
+                previousStep();
+            }
+        }
+
+        // Function to move to the next step
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                // If on Step 1, validate the password before proceeding
+                if (currentStep === 1) {
+                    if (!validatePassword()) {
+                        // Ensure the password meets all criteria before proceeding
+                        const alertElm = document.getElementById("error-message");
+                        alertElm.className = 'alert alert-danger'; // Set classes
+                        alertElm.role = 'alert'; // Set role attribute
+                        alertElm.innerHTML = "Please enter the valid password.";
+
+                        // Clear password input fields
+                        document.getElementById("password").value = "";
+
+                        // Unchecked all radio buttons
+                        document.getElementById('password').value = "";
+                        document.getElementById('letter-criteria').checked = false;
+                        document.getElementById('number-special-criteria').checked = false;
+                        document.getElementById('length-criteria').checked = false;
+
+                        return;
+                    }
+                } else if (currentStep === 2) {
+                    if (!validatePersonalInfo()) {
+                        // Ensure the password meets all criteria before proceeding
+                        const alertElm = document.getElementById("error-message");
+                        alertElm.className = 'alert alert-danger'; // Set classes
+                        alertElm.role = 'alert'; // Set role attribute
+                        alertElm.innerHTML = "Please fill out all required fields.";
+                        return;
+                    }
+                }
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
+
+        // Function to move to the previous step
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                if (currentStep == 1) {
+                    // Delete the previous password stored and unchecked all radio buttons
+                    document.getElementById('password').value = "";
+                    document.getElementById('letter-criteria').checked = false;
+                    document.getElementById('number-special-criteria').checked = false;
+                    document.getElementById('length-criteria').checked = false;
+                }
+                // showStep(currentStep);
+                showStep();
+            }
+        }
+
+        // Function to validate the password
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+
+            // Define criteria
+            const hasLetter = /[a-zA-Z]/.test(password);
+            const hasNumberOrSpecial = /[0-9!@#$%^&*(),.?":{}|<>]/.test(password);
+            const hasMinLength = password.length >= 10;
+
+            // Update checkboxes based on criteria
+            document.getElementById('letter-criteria').checked = hasLetter;
+            document.getElementById('number-special-criteria').checked = hasNumberOrSpecial;
+            document.getElementById('length-criteria').checked = hasMinLength;
+
+            // Return true only if all criteria are met
+            return hasLetter && hasNumberOrSpecial && hasMinLength;
+        }
+
+        function validatePersonalInfo() {
+            let isValid = true;
+
+            // Get the inputs in the current step
+            const inputs = document.querySelectorAll(`#step-2 input[required]`);
+
+            // Check each required input
+            // inputs.forEach(input => {
+            //     if (!input.value) {
+            //         isValid = false;
+            //         input.style.borderColor = 'red'; // Highlight the input field
+            //     } else {
+            //         input.style.borderColor = ''; // Reset border color if valid
+            //     }
+            // });
+            inputs.forEach(input => {
+                if (!input.value) {
+                    isValid = false;
+                }
+            });
+
+            // Check if there are any radio buttons for gender and if one is selected
+            const genderRadios = document.querySelectorAll(`#step-2 input[name="gender"]`);
+            const genderSelected = Array.from(genderRadios).some(radio => radio.checked);
+            
+            // if (genderRadios.length > 0 && !genderSelected) {
+            //     isValid = false;
+            //     genderRadios[0].parentElement.style.borderColor = 'red'; // Highlight the gender section
+            // } else {
+            //     genderRadios[0].parentElement.style.borderColor = ''; // Reset if valid
+            // }
+
+            if (genderRadios.length > 0 && !genderSelected) {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function clearAlerts() {
+            const errorMessageDiv = document.getElementById("error-message");
+            errorMessageDiv.innerHTML = ""; // Clear the inner HTML of the error message div
+            errorMessageDiv.className = ""; // Optionally, remove any existing alert classes
+            errorMessageDiv.removeAttribute('role'); // Remove role attribute
+        }
+
+
+        // Function to validate all steps before submission
+        function validateAllSteps() {
+            // Optionally, add more validations for other steps here
+            return true; // Allow form submission
+        }
+
+        // Initialize the first step on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // showStep(currentStep);
+            showStep();
+        });
+    </script>
+</body>
+</html>
