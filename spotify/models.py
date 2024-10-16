@@ -8,6 +8,7 @@ from .utils import generate_random_username
 # Create your models here.
 class User(models.Model):
     user_name = models.CharField(max_length=150, unique=True, default=generate_random_username)
+    display_name = models.CharField(max_length=150)
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
     email = models.EmailField(unique=True)

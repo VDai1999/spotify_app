@@ -91,6 +91,28 @@ def sign_up_form(request):
     # Render the signup password page
     return render(request, 'signup_form.html', {'email': email})
 
+def save_sign_up(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        display_name = request.POST.get('name')
+        birth_date = request.POST.get('birthdate')
+        gender = request.POST.get('gender')
+
+        new_user = User(
+            email=email,
+            password=password,
+            display_name=display_name,
+            date_of_birth=birth_date,
+            gender=gender
+        )
+        new_user.save()
+
+        messages.success(request, "Account created successfully!")
+        return redirect('login')  # Replace with your login URL
+
+    return render(request, 'signup.html')  # Render sign-up form if GET request
+
 def reset_password(request):
     # Render the signup password page
     return render(request, 'reset_password.html')
