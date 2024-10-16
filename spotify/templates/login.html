@@ -12,7 +12,6 @@
 
     <body>
         <div id="main-container">
-            <!-- <img src="../statics/img/spotify_logo.jpg" id="logo" alt="Spotify Logo"> -->
             <img src="{% static 'img/spotify_logo.jpg' %}" id="logo" alt="Spotify Logo">
 
             <h2 class="text-white">Log in to Spotify</h2>
@@ -58,16 +57,5 @@
                 <a href="{% url 'sign_up' %}" class="text-white">Sign up for Spotify</a>
             </div>
         </div>
-
-        <!-- <script>
-            // Automatically clear messages after 30 seconds
-            setTimeout(function () {
-                var messages = document.querySelectorAll('.alert');
-                messages.forEach(function (message) {
-                    message.style.display = 'none'; // Hides the message after 30 seconds
-                });
-            }, 30000);
-        </script> -->
-        
     </body>
 </html>
