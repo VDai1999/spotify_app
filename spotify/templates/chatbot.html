@@ -24,12 +24,14 @@
     <div class="container-fluid" style="margin-top: 10px">
       <div class="row">
         <div class="col-md-3">
-          <img
-            src="{% static 'img/spotify_logo.jpg' %}"
-            id="logo"
-            alt="Spotify Logo"
-            width="60px"
-          />
+          <a href="{% url 'dashboard' %}">
+            <img
+              src="{% static 'img/spotify_logo.jpg' %}"
+              id="logo"
+              alt="Spotify Logo"
+              width="60px"
+            />
+          </a>
         </div>
 
         <div class="col-auto">
@@ -42,7 +44,14 @@
           <input
             type="text"
             placeholder="What do you want to play?"
-            style="border-radius: 50px; padding: 10px; width: 500px"
+            style="
+              border-radius: 50px;
+              padding: 10px;
+              width: 500px;
+              background-color: rgb(58, 57, 57);
+              border: 1px solid #bbb;
+              color: white;
+            "
           />
         </div>
 
@@ -50,7 +59,9 @@
           <!-- <a href="" class="text-white"><img src="{% static 'img/download.png' %}" alt="Download Icon" width="40px" ><span>&nbsp;&nbsp;Install App</span></a> -->
           <a href="" class="text-white">
             <div class="circle">
-              <i class="fa-solid fa-download"></i>
+              <a href="{% url 'download_app' %}"
+                ><i class="fa-solid fa-download"></i
+              ></a>
             </div>
           </a>
         </div>

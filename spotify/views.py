@@ -166,12 +166,6 @@ def get_openai_answer(request):
         prompt = request.POST.get("userInput")
 
         try:
-            # response = openai.Completion.create(
-            #     model="text-davinci-003",
-            #     prompt=prompt,
-            #     max_tokens=50
-            # )
-
             response = client.chat.completions.create(
                 model = "gpt-3.5-turbo",
                 messages=[{"role": "user", "content": prompt}],
@@ -180,7 +174,6 @@ def get_openai_answer(request):
             )
 
             # Retrieve the response text
-            # completion_text = response.choices[0].text.strip()
             answer = response.choices[0].message.content
 
             return JsonResponse({"completion": answer})
@@ -189,3 +182,7 @@ def get_openai_answer(request):
             return JsonResponse({"error": str(e)}, status=500)
     else:
         return render(request, "chatbot.html")
+    
+def download_app(request):
+    return render(request, 'download_app.html')
+
