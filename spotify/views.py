@@ -36,7 +36,7 @@ def login_validate(request):
                 # Password is correct, proceed with login
                 messages.success(request, "Login successful!")
                 
-                return redirect('home')  # Redirect to the home page or dashboard
+                return redirect('home')  # Redirect to the home page
             else:
                 messages.error(request, "Incorrect username or password.")
         except User.DoesNotExist:
@@ -139,3 +139,9 @@ def reset_password_submission(request):
     
     # If form submission fails, stay on the same page with the error message
     return render(request, 'reset_password.html')
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
+
+def chatbox(request):
+    return render(request, 'chatbox.html')

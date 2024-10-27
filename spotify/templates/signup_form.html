@@ -17,7 +17,7 @@
 <body>
     <div id="main-container">
         <!-- Spotify Logo -->
-        <img src="{% static 'img/spotify_logo.jpg' %}" id="logo" alt="Spotify Logo">
+        <a href="{% url 'login' %}"><img src="{% static 'img/spotify_logo.jpg' %}" id="logo" alt="Spotify Logo"></a>
 
         <!-- Progress Bar -->
         <div class="progress" style="width: 70%; height: 5px">
@@ -153,6 +153,7 @@
                 <br> <br>
                 
                 <button type="submit" style="width: 17%; margin-left: 24%; margin-right: 24%;">Submit</button>
+                <br> <br>
             </div>
         </form>
     </div>

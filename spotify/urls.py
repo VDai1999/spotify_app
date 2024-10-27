@@ -11,4 +11,6 @@ urlpatterns = [
     path("save_sign_up", views.save_sign_up, name="save_sign_up"),
     path("reset_password", views.reset_password, name="reset_password"),
     path("reset_password_submission", views.reset_password_submission, name="reset_password_submission"),
+    path("dashboard", views.dashboard, name="dashboard"),
+    path("chatbox", views.chatbox, name="chatbox"),
 ]
