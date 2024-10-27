@@ -8,10 +8,25 @@ from django.utils.safestring import mark_safe
 from django.urls import reverse
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseRedirect
+from django.conf import settings
+from django.http import JsonResponse
+
 
 from urllib.parse import urlencode
+from dotenv import load_dotenv
+from openai import OpenAI
+import os
 
 from .models import User
+
+# Load keys from .env file
+load_dotenv() 
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(
+  api_key=openai_api_key,
+)
+
 
 # Create your views here.
 def home(request):
@@ -143,5 +158,34 @@ def reset_password_submission(request):
 def dashboard(request):
     return render(request, 'dashboard.html')
 
-def chatbox(request):
-    return render(request, 'chatbox.html')
+def chatbot(request):
+    return render(request, 'chatbot.html')
+
+def get_openai_answer(request):
+    if request.method == "POST":
+        prompt = request.POST.get("userInput")
+
+        try:
+            # response = openai.Completion.create(
+            #     model="text-davinci-003",
+            #     prompt=prompt,
+            #     max_tokens=50
+            # )
+
+            response = client.chat.completions.create(
+                model = "gpt-3.5-turbo",
+                messages=[{"role": "user", "content": prompt}],
+                stream=False,
+                max_tokens = 1024,
+            )
+
+            # Retrieve the response text
+            # completion_text = response.choices[0].text.strip()
+            answer = response.choices[0].message.content
+
+            return JsonResponse({"completion": answer})
+
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+    else:
+        return render(request, "chatbot.html")
