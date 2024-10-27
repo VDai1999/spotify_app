@@ -1,0 +1,81 @@
+body {
+    background-color: #161616;
+    margin: 0;
+}
+
+hr.solid {
+    border-top: 2px solid #bbb;
+}
+
+input[type="text"], input[type="submit"], input[type="password"]{
+    width: 100%; /* Make the input fields responsive */
+    max-width: 600px; /* Set a maximum width */
+    min-width: 350px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: white;
+}
+
+input[type="text"], input[type="password"] {
+    border: 1px solid #bbb;
+    background-color: black;
+}
+
+#logo {
+    width: 75px;
+    height: 75px;
+}
+
+#main-container {
+    background-color: black;
+}
+
+input[type="submit"] {
+    border-radius: 30px;
+    background-color: #1DB954;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column; /* Align elements in a column */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 80%;
+    width: 50%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+#sub-container {
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+input[type="text"]:hover {
+    border-color: white; /* Change border color on hover */
+    /* background-color: rgba(118, 199, 192, 0.1); */
+}
+
+input[type="text"]:focus {
+    color: white;
+    outline: none;  
+    border: 2px solid white;
+}
+
+input[type="submit"]:hover {
+    transform: scale(1.05);
+    background-color: #27db66;
+}
+
+/* When the screen width is below 800px, remove the background */
+@media (max-width: 800px) {
+    body {
+        background-color: black; /* Same as main div to "hide" background */
+    }
+
+    #main-container {
+        width: 90%; /* Make the container take up more width */
+        height: auto; /* Adjust height for smaller screens */
+        margin-top: 5%; /* Increase margin from top */
+    }
+}
