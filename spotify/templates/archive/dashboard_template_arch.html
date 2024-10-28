@@ -1,5 +1,4 @@
 {% load static %}
-
 <html>
   <head>
     <title>Spotify - Music for everyone</title>
@@ -17,7 +16,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    {% block cssStylesheet %} {% endblock %}
   </head>
 
   <body>
@@ -35,12 +34,9 @@
         </div>
 
         <div class="col-auto">
-          <div class="circle hover-target">
-            <a href="{% url 'dashboard' %}">
-              <i class="fas fa-home"></i>
-            </a>
+          <div class="circle">
+            <i class="fas fa-home"></i>
           </div>
-          <!-- <div class="explanation-text" style="display: none;">Home</div> -->
         </div>
 
         <div class="col">
@@ -69,7 +65,7 @@
         </div>
 
         <div class="col-auto">
-          <a href="{% url 'notification' %}">
+          <a href="">
             <div class="circle">
               <i class="fa-regular fa-bell"></i>
             </div>
@@ -124,11 +120,12 @@
           </div>
         </div>
 
-        <div
-          class="col-md-9"
-          style="color: white; background-color: #131212"
-        ></div>
+        <div class="col-md-9" style="color: white; background-color: #131212">
+          {% block content %} {% endblock %}
+        </div>
       </div>
     </div>
+
+    {% block javascript %} {% endblock %}
   </body>
 </html>
