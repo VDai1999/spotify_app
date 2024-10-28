@@ -36,7 +36,9 @@
 
         <div class="col-auto">
           <div class="circle">
-            <i class="fas fa-home"></i>
+            <a href="{% url 'dashboard' %}">
+              <i class="fas fa-home"></i>
+            </a>
           </div>
         </div>
 
@@ -68,7 +70,7 @@
 
         <div class="col-auto">
           <!-- <a href="" class="float-end"><img src="{% static 'img/alarm.png' %}" alt="Notification Icon" width="40px"></a> -->
-          <a href="">
+          <a href="{% url 'notification' %}">
             <div class="circle">
               <i class="fa-regular fa-bell"></i>
             </div>

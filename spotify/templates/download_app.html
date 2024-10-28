@@ -36,7 +36,9 @@
 
         <div class="col-auto">
           <div class="circle">
-            <i class="fas fa-home"></i>
+            <a href="{% url 'dashboard' %}">
+              <i class="fas fa-home"></i>
+            </a>
           </div>
         </div>
 
@@ -64,7 +66,7 @@
         </div>
 
         <div class="col-auto">
-          <a href="">
+          <a href="{% url 'notification' %}">
             <div class="circle">
               <i class="fa-regular fa-bell"></i>
             </div>

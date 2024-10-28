@@ -186,3 +186,6 @@ def get_openai_answer(request):
 def download_app(request):
     return render(request, 'download_app.html')
 
+def notification(request):
+    return render(request, 'notification.html')
+
