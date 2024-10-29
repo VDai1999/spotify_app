@@ -189,3 +189,6 @@ def download_app(request):
 def notification(request):
     return render(request, 'notification.html')
 
+def library(request):
+    return render(request, 'your_library.html')
+

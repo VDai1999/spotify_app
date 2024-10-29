@@ -15,5 +15,6 @@ urlpatterns = [
     path("chatbot", views.chatbot, name="chatbot"),
     path("get_openai_answer", views.get_openai_answer, name="get_openai_answer"),
     path("download_app", views.download_app, name="download_app"),
-    path("notification", views.notification, name="notification")
+    path("notification", views.notification, name="notification"),
+    path("library", views.library, name="library"),
 ]
