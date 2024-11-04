@@ -69,3 +69,35 @@ class User(models.Model):
 
     def __str__(self):
         return self.user_name
+    
+class Playlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+    
+class Song(models.Model):
+    title = models.CharField(max_length=255)
+    artist = models.CharField(max_length=255, blank=True, null=True)
+    album = models.CharField(max_length=255, blank=True, null=True)
+    duration = models.IntegerField(help_text="Duration in seconds", blank=True, null=True)
+    release_date = models.DateField(blank=True, null=True)
+    genre = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.title} by {self.artist}"
+    
+class PlaylistSong(models.Model):
+    playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name="playlist_songs")
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name="song_playlists")
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    # class Meta:
+    #     unique_together = ("playlist", "song")  # Ensures a song can only appear once per playlist
+
+    def __str__(self):
+        return f"{self.song.title} in {self.playlist.name}"

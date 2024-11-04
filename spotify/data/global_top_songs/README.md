@@ -1,0 +1,2 @@
+# Overviews
+The raw data collected for this project was collected from https://charts.spotify.com/charts/view/regional-global-weekly/latest for the period of 01/07/2023 to 31/11/2024. CSV files were downloaded manually; then, the data were combined and transformed in this Notebook.
