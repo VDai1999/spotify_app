@@ -81,15 +81,29 @@ class Playlist(models.Model):
         return self.name
     
 class Song(models.Model):
-    title = models.CharField(max_length=255)
-    artist = models.CharField(max_length=255, blank=True, null=True)
-    album = models.CharField(max_length=255, blank=True, null=True)
-    duration = models.IntegerField(help_text="Duration in seconds", blank=True, null=True)
-    release_date = models.DateField(blank=True, null=True)
-    genre = models.CharField(max_length=100, blank=True, null=True)
+    uri = models.CharField(max_length=100, unique=True)
+    artist_names = models.CharField(max_length=255)
+    track_name = models.CharField(max_length=255)
+    acousticness = models.FloatField()
+    danceability = models.FloatField()
+    duration_ms = models.IntegerField()
+    energy = models.FloatField()
+    instrumentalness = models.FloatField()
+    liveness = models.FloatField()
+    loudness = models.FloatField()
+    mode = models.IntegerField(choices=[(0, 'Minor'), (1, 'Major')])
+    speechiness = models.FloatField()
+    tempo = models.FloatField()
+    time_signature = models.IntegerField()
+    valence = models.FloatField()
+    uri_artist = models.CharField(max_length=100)
+    artist_pop = models.IntegerField()
+    num_followers = models.BigIntegerField()
+    artist_genres = models.JSONField()
+    track_pop = models.IntegerField()
 
     def __str__(self):
-        return f"{self.title} by {self.artist}"
+        return f"{self.track_name} by {self.artist_names}"
     
 class PlaylistSong(models.Model):
     playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name="playlist_songs")
