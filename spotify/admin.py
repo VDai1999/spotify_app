@@ -11,9 +11,12 @@ class PlaylistAdmin(admin.ModelAdmin):
 
 
 class SongAdmin(admin.ModelAdmin):
-    list_display = ('track_name', 'artist_names', 'duration_ms', 'uri', 'track_pop', 'artist_pop')
-    search_fields = ('track_name', 'artist_names')
-    list_filter = ('artist_genres',)
+    list_display = ["uri" , "artist_names", "track_name", "acousticness", "danceability", "duration_ms",
+                    "energy", "instrumentalness", "liveness", "loudness", "mode", "speechiness", "tempo",
+                    "time_signature", "valence", "uri_artist", "artist_pop", "num_followers", "artist_genres",
+                    "track_pop"]
+    search_fields = ['track_name', 'artist_names']
+    list_filter = ['artist_names']
 
 
 class PlaylistSongAdmin(admin.ModelAdmin):

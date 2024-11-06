@@ -142,8 +142,7 @@ def spotify_crawl_data(raw_data):
                          "instrumentalness", "liveness", "loudness", "mode", 
                          "speechiness", "tempo", "time_signature", "valence"]
 
-    # for i in range(0, len(raw_data)):
-    for i in range(750, 800):
+    for i in range(0, len(raw_data)):
         try:
             features = sp.audio_features(raw_data.loc[i, "uri"])
             audio_features = [features[0][feature] for feature in selected_features]
