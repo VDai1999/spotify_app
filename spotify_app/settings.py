@@ -23,6 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-d0g-e5__a@z@$z&1@v&su&=6*=yo+uynrn*h2vmuzsm&rmp%v='
 
+# SESSION_COOKIE_SECURE = True
+# LOGIN_REDIRECT_URL = '/dashboard/'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -131,3 +134,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Stores session data in the database
+SESSION_COOKIE_AGE = 60 * 30  # 30 minutes, defines the cookie's lifespan in seconds
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Deletes the session cookie when the browser is closed

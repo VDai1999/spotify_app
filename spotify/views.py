@@ -10,6 +10,7 @@ from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.http import JsonResponse
+# from django.contrib.auth.decorators import login_required
 
 
 from urllib.parse import urlencode
@@ -51,7 +52,10 @@ def login_validate(request):
                 # Password is correct, proceed with login
                 messages.success(request, "Login successful!")
                 
-                return redirect('home')  # Redirect to the home page
+                # Store data in the session
+                request.session['credential'] = user_input
+
+                return redirect('dashboard')  # Redirect to the home page
             else:
                 messages.error(request, "Incorrect username or password.")
         except User.DoesNotExist:
@@ -155,11 +159,25 @@ def reset_password_submission(request):
     # If form submission fails, stay on the same page with the error message
     return render(request, 'reset_password.html')
 
+def retrieve_display_name(request):
+    # Retrieve credential info (either username or email of user)
+    credential = request.session.get('credential', '')
+
+    # Retrieve display name
+    user = User.objects.filter(Q(user_name=credential) | Q(email=credential)).first()
+    display_name = user.display_name
+
+    return display_name
+
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    display_name = retrieve_display_name(request)
+
+    return render(request, 'dashboard.html', {'display_name': display_name})
 
 def chatbot(request):
-    return render(request, 'chatbot.html')
+    display_name = retrieve_display_name(request)
+
+    return render(request, 'chatbot.html', {'display_name': display_name})
 
 def get_openai_answer(request):
     if request.method == "POST":
@@ -181,14 +199,21 @@ def get_openai_answer(request):
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
     else:
-        return render(request, "chatbot.html")
+        display_name = retrieve_display_name(request)
+
+        return render(request, "chatbot.html", {'display_name': display_name})
     
 def download_app(request):
-    return render(request, 'download_app.html')
+    display_name = retrieve_display_name(request)
+    return render(request, 'download_app.html', {'display_name': display_name})
 
 def notification(request):
-    return render(request, 'notification.html')
+    display_name = retrieve_display_name(request)
+
+    return render(request, 'notification.html', {'display_name': display_name})
 
 def library(request):
-    return render(request, 'your_library.html')
+    display_name = retrieve_display_name(request)
+    
+    return render(request, 'your_library.html', {'display_name': display_name})
 
