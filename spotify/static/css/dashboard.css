@@ -23,3 +23,37 @@ a {
     font-size: 20px;
     color: white
 }
+
+.artist-card {
+    width: 200px;
+    height: 255px;
+    background-color: #181818;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin: 0 5px 20px;
+    display: inline-block;
+}
+
+.artist-card img {
+    margin-top: 10px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+}
+
+.artist-card .artist-name {
+    font-size: 18px;
+    color: #fff;
+    margin-top: 8px;
+}
+
+.artist-card .artist-title {
+    font-size: 13px;
+    color: #b3b3b3;
+}

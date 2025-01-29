@@ -1,5 +1,3 @@
-# Ignore .venv folder
 venv
-
-# Ignore .env file
 .env
+.cache

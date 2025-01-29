@@ -1,0 +1,115 @@
+artist,uri,genres,num_of_followers,popularity
+Drake,3TVXtAsR1Inumwj472S9r4,"['canadian hip hop', 'canadian pop', 'hip hop', 'pop rap', 'rap']",94133053,96
+Post Malone,246dkjvS1zLTtiykXe5h60,"['dfw rap', 'melodic rap', 'pop', 'rap']",46002055,91
+Ed Sheeran,6eUKZXaKkcviH0Ku9w2n3V,"['pop', 'singer-songwriter pop', 'uk pop']",117757199,90
+J Balvin,1vyhD5VmyZ7KMfW5gqLgo5,"['reggaeton', 'reggaeton colombiano', 'trap latino', 'urbano latino']",37516883,88
+Bad Bunny,4q3ewBCX7sLwd24euuV69X,"['reggaeton', 'trap latino', 'urbano latino']",87698874,96
+Justin Bieber,1uNFoZAHBGtllmzznpCI3s,"['canadian pop', 'pop']",79320329,92
+Ozuna,1i8SpTcr7yvPOmcqrbnVXY,"['puerto rican pop', 'reggaeton', 'trap latino', 'urbano latino']",37802874,87
+Ariana Grande,66CXWjxzNUsdJxJ2JdwvnR,['pop'],101781212,95
+Khalid,6LuN9FCkKOj5PcnpouEgny,"['pop', 'pop r&b']",16490775,85
+Travis Scott,0Y5tJX1MQlPlqiwlOH1tJY,"['rap', 'slap house']",35213935,94
+The Weeknd,1Xyo4u8uXC1ZmMpatF05PJ,"['canadian contemporary r&b', 'canadian pop', 'pop']",95971547,96
+Billie Eilish,6qqNVTkY8uBg9cP3Jd7DAH,"['art pop', 'pop']",103636544,96
+The Chainsmokers,69GGBxA162lTqCwzJG5jLp,['pop'],20696473,83
+Camila Cabello,4nDoRrQiYLoBzwC5BhVJzF,"['dance pop', 'pop']",34209288,83
+Dua Lipa,6M2wZ9GZgrQXHCFfjv46we,"['dance pop', 'pop', 'uk pop']",45164486,88
+Juice WRLD,4MCBfE4596Uoi2O4DtmEMz,"['chicago rap', 'melodic rap', 'rap']",36970287,93
+Selena Gomez,0C8ZW7ezQVs4URX5aX7Kqx,"['pop', 'post-teen pop']",51365874,83
+Halsey,26VFTg2z8YR0cCuwLzESi2,"['electropop', 'etherpop', 'indie poptimism', 'pop']",21786345,83
+Cardi B,4kYSro6naA4h99UJvo89HB,"['pop', 'rap']",24770146,80
+Calvin Harris,7CajNmpbOovFoOoasH2HaY,"['dance pop', 'edm', 'electro house', 'house', 'pop', 'progressive house', 'uk dance']",22970612,86
+Nicki Minaj,0hCNtLu0JehylgoiP8L4Gh,"['hip pop', 'pop', 'queens hip hop', 'rap']",32918702,87
+Shawn Mendes,7n2wHs1TKAczGzO7Dd2rGr,"['canadian pop', 'pop', 'viral pop']",43885641,85
+Imagine Dragons,53XhwfbYqKCa1cC15pYq2q,"['modern rock', 'pop', 'rock']",55560542,89
+Kendrick Lamar,2YZyLoL8N0Wb9xBt1NhZWg,"['conscious hip hop', 'hip hop', 'rap', 'west coast rap']",35133587,97
+Sam Smith,2wY79sveU1sp5g7SokKOiI,"['pop', 'uk pop']",24840759,84
+Maroon 5,04gDigrS5kc9YWfZHwBETP,['pop'],43455229,87
+Rihanna,5pKCCKE2ajJHZ9KAiaK11H,"['barbadian pop', 'pop', 'urban contemporary']",64178109,92
+Marshmello,64KEffDW9EtZ1y2vBYgq8T,"['brostep', 'edm', 'pop', 'progressive electro house']",33946078,85
+DJ Snake,540vIaP2JwjQb9dm3aArA4,"['dance pop', 'edm', 'electronic trap', 'pop', 'pop dance']",8951444,79
+Young Thug,50co4Is1HCEo8bhOyUWKpn,"['atl hip hop', 'atl trap', 'gangster rap', 'hip hop', 'melodic rap', 'rap', 'trap']",10896970,86
+Sia,5WUlDfRSoLAfcVSX1WnrxN,['pop'],29045347,88
+David Guetta,1Cs0zKBU1kc0i8ypK3B9ai,"['big room', 'dance pop', 'edm', 'pop', 'pop dance']",26539395,90
+Bebe Rexha,64M6ah0SkkRsnPGtGiRAbb,"['dance pop', 'pop']",9415042,81
+Ty Dolla $ign,7c0XG5cIJTrrAgEC3ULPiq,"['hip hop', 'pop rap', 'r&b', 'southern hip hop', 'trap', 'trap soul']",5817493,84
+Eminem,7dGJo4pcD2V6oG8kP0tJRR,"['detroit hip hop', 'hip hop', 'rap']",94370716,93
+Coldplay,4gzpq5DPGxSnKTe4SA8HAU,"['permanent wave', 'pop']",55235863,91
+Bruno Mars,0du5cEVh5yTK9QJze8zA0C,"['dance pop', 'pop']",63737509,96
+Avicii,1vCWHaC5f2uS3yhpwWbIA6,"['dance pop', 'edm', 'pop', 'pop dance']",23145330,81
+Taylor Swift,06HL4z0CvFAxyc27GXpf02,['pop'],127838324,100
+Anne-Marie,1zNqDE7qDGCsyzJwohVaoX,['pop'],12164261,79
+Kanye West,5K4W6rqBFWDnAN6FQUkS6x,"['chicago rap', 'hip hop', 'rap']",28347141,93
+Charlie Puth,6VuMaDnrHyPL1p4EHjYLi7,"['pop', 'viral pop']",23681287,81
+J. Cole,6l3HvQ5sa6mXTsMTB19rO5,"['conscious hip hop', 'hip hop', 'north carolina hip hop', 'rap']",25202868,87
+Zedd,2qxJFvFYMEDqd7ui6kSAcq,"['complextro', 'edm', 'german techno', 'pop', 'pop dance']",6000486,76
+Jason Derulo,07YZf4WDAMNwqr4jfgOZ8y,"['dance pop', 'pop']",12303149,79
+Clean Bandit,6MDME20pz9RveH9rEXvrOM,"['pop', 'uk dance', 'uk funky']",5651924,77
+Martin Garrix,60d24wfXkVzDSfLS6hyCjZ,"['dutch edm', 'edm', 'pop', 'pop dance', 'progressive house']",15114481,77
+Demi Lovato,6S2OmqARrzebs0tKUEyXyp,"['pop', 'post-teen pop']",26867135,79
+Offset,4DdkRBBYG6Yk9Ka8tdJ9BW,"['atl hip hop', 'hip hop', 'pop rap', 'rap', 'trap']",4677391,80
+Lady Gaga,1HY2Jd0NmPuamShAr6KMms,"['art pop', 'dance pop', 'pop']",33270038,92
+ZAYN,5ZsFI1h6hIdQRw2ti0hz81,"['pop', 'uk pop']",23498544,79
+Lil Wayne,55Aa2cqylxrFIXC767Z865,"['hip hop', 'new orleans rap', 'pop rap', 'rap', 'trap']",15793200,88
+Lauv,5JZ7CnR6gTvEMKX4g70Amv,['pop'],6410297,77
+Tyga,5LHRHt1k9lMyONurDHEdrp,"['hip hop', 'pop rap', 'rap', 'southern hip hop', 'trap']",7054427,79
+Ellie Goulding,0X2BH1fck6amBIoJhDVmmJ,"['indietronica', 'metropopolis', 'pop', 'uk pop']",12721397,81
+Queen,1dfeR4HaWDbWqFHLkxsg1d,"['classic rock', 'glam rock', 'rock']",52202480,86
+Lewis Capaldi,4GNC7GD6oZMSxPGyXy4MNB,"['pop', 'uk pop']",13041511,81
+Chris Brown,7bXgB6jMjp9ATFy66eO08Z,"['r&b', 'rap']",24373077,89
+Becky G,4obzFoKoKRHIphyHzJ35G3,"['latin pop', 'latin viral pop', 'rap latina', 'reggaeton', 'trap latino', 'urbano latino']",15471749,79
+Alan Walker,7vk5e3vY1uw9plTHJAMwjN,['electro house'],39880543,82
+G-Eazy,02kJSzxNuaWGqwubyUba0Z,"['indie pop rap', 'oakland hip hop', 'pop rap', 'rap']",5616519,79
+Katy Perry,6jJ0s89eD6GaHleKKya26X,['pop'],35249477,86
+Lil Nas X,7jVv8c5Fj3E9VhNjxT4snq,['lgbtq+ hip hop'],12406241,76
+Harry Styles,6KImCVD70vtIoJWnq6nGn3,['pop'],33224687,85
+James Arthur,4IWBUUAFIplrNtaOHcJPRM,"['pop', 'talent show', 'uk pop']",19205030,82
+Rita Ora,5CCwRZC6euC8Odo6y9X8jr,"['dance pop', 'pop', 'uk pop']",8410803,73
+Big Sean,0c173mlxpT3dSFRgMO8XPh,"['detroit hip hop', 'hip hop', 'pop rap', 'r&b', 'rap', 'southern hip hop', 'trap']",11271492,78
+DJ Khaled,0QHgL1lAIqAw0HtD7YldmP,"['hip hop', 'miami hip hop', 'pop rap', 'rap']",11787254,76
+A$AP Rocky,13ubrt8QOOCPljQ2FL1Kca,"['east coast hip hop', 'hip hop', 'rap']",15493779,86
+SZA,7tYKF4w9nC0nq9CsPZTHyP,"['pop', 'r&b', 'rap']",24983147,92
+BTS,3Nrfpe0tUJi4K4DXYWgMUX,"['k-pop', 'k-pop boy group', 'pop']",77108746,87
+OneRepublic,5Pwc4xIPtQLFEnJriah9YJ,"['piano rock', 'pop']",17719396,85
+Enrique Iglesias,7qG3b048QCHVRO5Pv1T5lw,"['dance pop', 'latin pop', 'mexican pop']",11284374,79
+John Legend,5y2Xq6xcjJb2jVM54GHK3t,"['neo soul', 'pop', 'pop soul', 'urban contemporary']",7306805,79
+Pitbull,0TnOYISbd1XYRBk9myaseg,"['dance pop', 'miami hip hop', 'pop']",11047558,86
+Fifth Harmony,1l8Fu6IkuTP0U5QetQJ5Xt,"['girl group', 'pop', 'talent show']",16231319,70
+Bazzi,4GvEc3ANtPPjt1ZJllr5Zl,['pop'],5471644,71
+Meghan Trainor,6JL8zeS1NmiOftqZTRgdTz,"['hip pop', 'pop']",15507268,81
+benny blanco,5CiGnKThu5ctn9pBxv7DGa,['pop'],1260909,79
+Justin Timberlake,31TPClRtHm23RisEBtV3X7,"['dance pop', 'pop']",14810454,83
+Mark Ronson,3hv9jJF3adDNsBSIQDqcjp,['pop soul'],1154449,78
+Bradley Cooper,4VIvfOurcf0vuLRxLkGnIG,['hollywood'],268020,70
+Wiz Khalifa,137W8MRPWKqSmrBGDBFSop,"['hip hop', 'pittsburgh rap', 'pop rap', 'rap', 'southern hip hop', 'trap']",11526101,83
+Miley Cyrus,5YGY8feqx7naU7z4HrwZM6,['pop'],25191516,84
+Troye Sivan,3WGpXCj9YhhfX11TToZcXP,"['australian pop', 'pop', 'viral pop']",8681659,79
+One Direction,4AK6F7OLvEQ5QYCBNiQWHq,"['boy band', 'pop', 'post-teen pop', 'talent show']",37888877,89
+Little Mix,3e7awlrlDSwF3iM0WBjGMp,"['girl group', 'pop', 'talent show', 'uk pop']",12097344,75
+Doja Cat,5cj0lLjcoR7YOSnhnX0Po5,"['dance pop', 'pop']",32108682,87
+Lizzo,56oDRnqbIiwx4mymNEv7dS,"['escape room', 'minnesota hip hop', 'pop', 'trap queen']",5710101,70
+BLACKPINK,41MozSoPIsD1dJM0CLPjZF,"['k-pop', 'k-pop girl group', 'pop']",52087567,81
+Liam Payne,5pUo3fmmHT8bhCyHE52hA6,['pop'],10250360,72
+Jungkook,6HaGTQPmzraVmaVxvz6EUc,['k-pop'],16630239,87
+Jimin,1oSPZhvZMIrWW5I41kPkkY,['k-pop'],9669393,88
+Jin,5vV3bFXnN6D6N3Nj4xRvaV,['k-pop'],8633020,86
+Wendy,0FRUZvZNPzM3YJMABJxf2K,"['k-pop', 'korean pop']",954223,67
+Taeyeon,3qNVuliS40BLgXGxhdBdqu,['k-pop'],2985956,69
+Seventeen,7nqOGRxlXj7N2JYbgNEjYH,"['k-pop', 'k-pop boy group']",12548110,82
+RM,2auC28zjQyVTsiZKNgPRGs,['k-rap'],17209447,76
+j-hope,0b1sIQumIAsNbqAoIClSpy,"['k-pop', 'k-rap']",18130482,73
+AugustD,5RmQ8k4l3HZ8JoPb4mNsML,['k-rap'],14981676,76
+V,3JsHnjpbhX4SnySpvpa9DK,"['j-division', 'korean ost']",19239233,85
+Enhypen,5t5FqBwTcgKTaWmfEbwQY9,"['anime', 'k-pop boy group']",10518394,82
+aespa,6YVMFz59CuY7ngCxTxjpxE,['k-pop girl group'],7316146,83
+LE SSERAFIM,4SpbR6yFEvexJuaBpgAU5p,['k-pop girl group'],6209089,80
+ILLIT,36cgvBn0aadzOijnjjwqMN,['5th gen k-pop'],1881650,77
+TWICE,7n2Ycct7Beij7Dj7meI4X0,"['k-pop', 'k-pop girl group', 'pop']",21055523,80
+ATEEZ,68KmkJeZGfwe1OUaivBa2L,"['k-pop', 'k-pop boy group']",4416827,77
+BABYMONSTER,1SIocsqdEefUTE6XKGUiVS,['5th gen k-pop'],3137796,79
+Sabrina Carpenter,74KM79TiuVKeVCqs8QtB0B,['pop'],16168228,94
+Mariah Carey,4iHNK0tOyZPYnBU7nGAgpQ,"['dance pop', 'pop', 'urban contemporary']",10743864,86
+Shakira,0EmeFodog0BfCgMzAIvKQp,"['colombian pop', 'dance pop', 'latin pop', 'pop']",35739060,88
+Lana Del Rey,00FQb4jTyendYWaN8pK0wa,"['art pop', 'pop']",42524628,92
+Britney Spears,26dSoYclwsYLMAKD3tpOr4,"['dance pop', 'pop']",15687467,83
+JENNIE,250b0Wlc5Vk0CoUsaCY84M,['k-pop'],8037993,82

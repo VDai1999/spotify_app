@@ -92,3 +92,7 @@ This is a Django-based web application that simulates core functionalities of Sp
 - **Frontend**: HTML, CSS, Bootstrap
 - **Database**: PostgreSQL (or another Django-compatible database)
 - **Authentication**: Django's built-in authentication system
+
+## References
+
+1. Artist dataset: [Spotify Artist Metadata Top 10k](https://www.kaggle.com/datasets/jackharding/spotify-artist-metadata-top-10k)
