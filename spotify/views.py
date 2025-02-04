@@ -185,10 +185,10 @@ def retrieve_display_name(request):
 # @login_required(login_url='login')
 def dashboard(request):
     display_name = retrieve_display_name(request)
-    top_artist_profiles = craw_artist_img_urls()
+    top_artist_profiles = crawl_artist_img_urls()
+    top_song_profiles = crawl_song_img_urls()
 
-    return render(request, 'dashboard.html', {'display_name': display_name, 'top_artist_profiles': top_artist_profiles})
-    # return render(request, 'dashboard.html', {'display_name': display_name})
+    return render(request, 'dashboard.html', {'display_name': display_name, 'top_artist_profiles': top_artist_profiles, 'top_song_profiles': top_song_profiles})
 
 def chatbot(request):
     display_name = retrieve_display_name(request)
@@ -238,12 +238,10 @@ def logout(request):
     auth.logout(request)
     return redirect('login')
 
-def craw_artist_img_urls():
+def crawl_artist_img_urls():
     # Retrieve artists' uris from the database
     all_top_artist_uris = Song.objects.values_list('artist_names', 'uri_artist')
     random_top_artist_uris = random.sample(list(all_top_artist_uris), 7)
-
-    # print(f"Random uris: {random_top_artist_uris}")
 
     # Crawl artists' profile picture from Spotify
     profile_data = {}
@@ -251,6 +249,17 @@ def craw_artist_img_urls():
         profile_url = sp.artist(artist[1])['images'][0]['url']
         profile_data[artist[0]] = profile_url
 
-    # print(f"Artist and Image URLs: {profile_data}")
+    return profile_data
+
+def crawl_song_img_urls():
+    # Retrieve artists' uris from the database
+    all_song_artist_uris = Song.objects.values_list('track_name', 'uri')
+    random_top_song_uris = random.sample(list(all_song_artist_uris), 7)
+
+    # Crawl artists' profile picture from Spotify
+    profile_data = {}
+    for song in random_top_song_uris:
+        profile_url = sp.track(song[1])['album']['images'][0]['url']
+        profile_data[song[0]] = profile_url
 
     return profile_data
