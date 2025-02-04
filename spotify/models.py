@@ -79,7 +79,7 @@ class Playlist(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 class Song(models.Model):
     uri = models.CharField(max_length=100, unique=True)
     artist_names = models.CharField(max_length=255)
@@ -101,6 +101,7 @@ class Song(models.Model):
     num_followers = models.BigIntegerField()
     artist_genres = models.JSONField()
     track_pop = models.IntegerField()
+    song_img_url = models.CharField(max_length=255)
 
     def __str__(self):
         return f"{self.track_name} by {self.artist_names}"
@@ -115,3 +116,14 @@ class PlaylistSong(models.Model):
 
     def __str__(self):
         return f"{self.song.title} in {self.playlist.name}"
+    
+
+class Artist(models.Model):
+    artist = models.CharField(max_length=255)
+    uri = models.CharField(max_length=100)
+    genres = models.JSONField()
+    num_of_followers = models.IntegerField()
+    popularity = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.artist}"

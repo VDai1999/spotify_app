@@ -1,5 +1,5 @@
-# Ignore .venv folder
 venv
-
-# Ignore .env file
 .env
+.cache
+db.sqlite3
+spotify/__pycache__

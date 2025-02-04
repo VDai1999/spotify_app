@@ -77,7 +77,7 @@
         </div>
 
         <div class="col-auto">
-          <a href="{% url 'login' %}">
+          <a href="{% url 'logout' %}">
             <div class="circle">
               <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </div>
@@ -88,7 +88,7 @@
 
       <div class="row border border-dark">
         <div
-          class="col-md-3 border-end border-dark"
+          class="col-md-3 border-end border-dark vh-100"
           style="color: white; background-color: #131212"
         >
           <div class="border border-dark p-3 mb-3 rounded">
@@ -124,10 +124,49 @@
           </div>
         </div>
 
-        <div
-          class="col-md-9"
-          style="color: white; background-color: #131212">
-          
+        <div class="col-md-9" style="color: white; background-color: #131212">
+          <br />
+          <!-- Top Artists -->
+          <div>
+            <h4>Top Artists</h4>
+            <div class="scroll-container d-flex overflow-auto p-2 border-white">
+              {% for artist, image_url in top_artist_profiles.items %}
+              <div class="p-3">
+                <img
+                  src="{{ image_url }}"
+                  alt="{{ artist }}"
+                  style="width: 150px; height: 150px; border-radius: 50%"
+                />
+                <div class="artist-info text-center">
+                  <div class="artist-name">{{artist}}</div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+            <br /><br />
+
+            <!-- Top Songs -->
+            <div>
+              <h4>Top Songs</h4>
+              <div
+                class="scroll-container d-flex overflow-auto p-2 border-white"
+              >
+                {% for song, image_url in top_song_profiles.items %}
+                <div class="p-3">
+                  <img
+                    src="{{ image_url }}"
+                    alt="{{ artist }}"
+                    style="width: 150px; height: 150px; border-radius: 50%"
+                  />
+                  <div class="artist-info text-center">
+                    <div class="artist-name">{{song}}</div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

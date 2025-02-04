@@ -17,4 +17,5 @@ urlpatterns = [
     path("download_app", views.download_app, name="download_app"),
     path("notification", views.notification, name="notification"),
     path("library", views.library, name="library"),
+    path("logout", views.logout, name="logout"),
 ]

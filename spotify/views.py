@@ -10,15 +10,19 @@ from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.http import JsonResponse
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import auth
 
 
 from urllib.parse import urlencode
 from dotenv import load_dotenv
 from openai import OpenAI
 import os
+import random
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials  # To access authorized Spotify data
 
-from .models import User
+from .models import User, Song
 
 # Load keys from .env file
 load_dotenv() 
@@ -27,6 +31,15 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(
   api_key=openai_api_key,
 )
+
+# Spotify API Credentials
+client_id = os.getenv("SPOTIFY_CLIENT_ID")
+client_secret = os.getenv("SPOTIFY_SECRET_KEY")
+
+# Initialize Spotipy client
+client_credentials_manager = SpotifyClientCredentials(client_id=client_id,
+                                                      client_secret=client_secret)
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 
 # Create your views here.
@@ -169,10 +182,13 @@ def retrieve_display_name(request):
 
     return display_name
 
+# @login_required(login_url='login')
 def dashboard(request):
     display_name = retrieve_display_name(request)
+    top_artist_profiles = crawl_artist_img_urls()
+    top_song_profiles = crawl_song_img_urls()
 
-    return render(request, 'dashboard.html', {'display_name': display_name})
+    return render(request, 'dashboard.html', {'display_name': display_name, 'top_artist_profiles': top_artist_profiles, 'top_song_profiles': top_song_profiles})
 
 def chatbot(request):
     display_name = retrieve_display_name(request)
@@ -217,3 +233,33 @@ def library(request):
     
     return render(request, 'your_library.html', {'display_name': display_name})
 
+@login_required(login_url='login')
+def logout(request):
+    auth.logout(request)
+    return redirect('login')
+
+def crawl_artist_img_urls():
+    # Retrieve artists' uris from the database
+    all_top_artist_uris = Song.objects.values_list('artist_names', 'uri_artist')
+    random_top_artist_uris = random.sample(list(all_top_artist_uris), 7)
+
+    # Crawl artists' profile picture from Spotify
+    profile_data = {}
+    for artist in random_top_artist_uris:
+        profile_url = sp.artist(artist[1])['images'][0]['url']
+        profile_data[artist[0]] = profile_url
+
+    return profile_data
+
+def crawl_song_img_urls():
+    # Retrieve artists' uris from the database
+    all_song_artist_uris = Song.objects.values_list('track_name', 'uri')
+    random_top_song_uris = random.sample(list(all_song_artist_uris), 7)
+
+    # Crawl artists' profile picture from Spotify
+    profile_data = {}
+    for song in random_top_song_uris:
+        profile_url = sp.track(song[1])['album']['images'][0]['url']
+        profile_data[song[0]] = profile_url
+
+    return profile_data
