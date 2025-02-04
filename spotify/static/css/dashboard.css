@@ -57,3 +57,21 @@ a {
     font-size: 13px;
     color: #b3b3b3;
 }
+
+/* .scroll-container {
+white-space: nowrap;
+overflow-x: auto;
+} */
+
+.scroll-container {
+display: flex;
+overflow-x: scroll;
+scroll-behavior: smooth;
+white-space: nowrap;
+-ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+.scroll-container::-webkit-scrollbar {
+display: none; /* Hide scrollbar in Chrome, Safari, and Edge */
+}

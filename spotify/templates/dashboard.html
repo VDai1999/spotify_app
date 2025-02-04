@@ -125,32 +125,22 @@
         </div>
 
         <div class="col-md-9" style="color: white; background-color: #131212">
-          <section>
-            <!-- <div class="artist-card">
+          <h4>Top Artists</h4>
+
+          <div class="scroll-container d-flex overflow-auto p-2 border-white">
+            {% for artist, image_url in top_artist_profiles.items %}
+            <div class="p-3">
               <img
-                src="{{ top_artist_img_urls }}"
-                alt="Rema"
+                src="{{ image_url }}"
+                alt="{{ artist }}"
                 style="width: 150px; height: 150px; border-radius: 50%"
               />
-
-              <div class="artist-info">
-                <div class="artist-name">Rema</div>
-                <div class="artist-title">Artist</div>
+              <div class="artist-info text-center">
+                <div class="artist-name">{{artist}}</div>
               </div>
-            </div> -->
-
-            {% for artist, image_url in top_artist_profiles.items %}
-            <img
-              src="{{ image_url }}"
-              alt="{{ artist }}"
-              style="width: 150px; height: 150px; border-radius: 50%"
-            />
-            <div class="artist-info">
-              <div class="artist-name">{{artist}}</div>
-              <div class="artist-title">Artist</div>
             </div>
             {% endfor %}
-          </section>
+          </div>
         </div>
       </div>
     </div>
