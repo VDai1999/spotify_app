@@ -22,7 +22,7 @@ import random
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials  # To access authorized Spotify data
 
-from .models import User, Song
+from .models import User, Song, Artist
 
 # Load keys from .env file
 load_dotenv() 
@@ -240,7 +240,7 @@ def logout(request):
 
 def crawl_artist_img_urls():
     # Retrieve artists' uris from the database
-    all_top_artist_uris = Song.objects.values_list('artist_names', 'uri_artist')
+    all_top_artist_uris = Artist.objects.values_list('artist', 'uri')
     random_top_artist_uris = random.sample(list(all_top_artist_uris), 7)
 
     # Crawl artists' profile picture from Spotify
