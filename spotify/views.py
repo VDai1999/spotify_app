@@ -18,6 +18,7 @@ from urllib.parse import urlencode
 from dotenv import load_dotenv
 from openai import OpenAI
 import os
+import re
 import random
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials  # To access authorized Spotify data
@@ -261,5 +262,8 @@ def crawl_song_img_urls():
     for song in random_top_song_uris:
         profile_url = sp.track(song[1])['album']['images'][0]['url']
         profile_data[song[0]] = profile_url
+
+    # Remove text starting with "(" from the profile_data dictionary keys
+    profile_data = {re.sub(r'\(.*$', '', key): value for key, value in profile_data.items()}
 
     return profile_data
