@@ -1,7 +1,12 @@
 import os
 import pickle
+import django
 
-from models import Artist
+# Set up Django environment
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "spotify_app.settings")
+django.setup()
+
+from spotify.models import Artist
 
 if __name__ == "__main__":
     ## Read the file
