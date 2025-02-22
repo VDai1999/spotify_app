@@ -102,19 +102,24 @@
 
           <div class="border border-dark p-3 mb-3 rounded">
             <div class="mb-2">
-              <i class="fa-solid fa-music"></i> &nbsp; &nbsp; &nbsp; Your
-              Library
+              <i class="fa-solid fa-music"></i> &nbsp; &nbsp; &nbsp;
+              <b>Your Library</b>
             </div>
 
             <div>
-              <i class="fa-regular fa-heart"></i> &nbsp; &nbsp; &nbsp; Liked
-              Songs
+              <a href="{% url 'like_song' %}"">
+                <b
+                  ><i class="fa-regular fa-heart text-white"></i> &nbsp; &nbsp; &nbsp;
+                  <span class="text-white">Liked Songs</span>
+                  </b
+                >
+              </a>
             </div>
           </div>
 
           <div class="border border-dark p-3 rounded">
             <i class="fa-regular fa-circle-question"></i> &nbsp; &nbsp; &nbsp;
-            Ask Me
+            <b>Ask Me</b>
           </div>
         </div>
 

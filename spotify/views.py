@@ -267,3 +267,9 @@ def crawl_song_img_urls():
     profile_data = {re.sub(r'\(.*$', '', key): value for key, value in profile_data.items()}
 
     return profile_data
+
+def like_song(request):
+    display_name = retrieve_display_name(request)
+
+    # Render the like song page
+    return render(request, 'like_song.html', {'display_name': display_name}) 
