@@ -23,7 +23,7 @@ import random
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials  # To access authorized Spotify data
 
-from .models import User, Song, Artist
+from .models import User, Song, Artist, FavoriteSong
 
 # Load keys from .env file
 load_dotenv() 
@@ -270,6 +270,20 @@ def crawl_song_img_urls():
 
 def like_song(request):
     display_name = retrieve_display_name(request)
-
+    favorite_song_text = retrieve_favorite_song(request)
+    
     # Render the like song page
-    return render(request, 'like_song.html', {'display_name': display_name}) 
+    return render(request, 'like_song.html', {'display_name': display_name, 'favorite_song': favorite_song_text}) 
+
+def retrieve_favorite_song(request):
+    # Retrieve credential info (either username or email of user)
+    credential = request.session.get('credential')
+
+    # Retrieve user
+    user = User.objects.filter(Q(user_name=credential) | Q(email=credential)).first()
+    
+    # Retrieve favorite songs
+    favorite_songs = FavoriteSong.objects.filter(user=user)
+    count_song = favorite_songs.count()
+
+    return f"{count_song} song" if count_song == 1 else f"{count_song} songs"

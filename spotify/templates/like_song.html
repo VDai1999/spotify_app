@@ -128,19 +128,19 @@
         >
           <div class="container-fluid">
             <div class="row">
-              <div class="col-12">
+              <div class="col-3">
                 <img
                   src="{% static 'img/like_song.png' %}"
                   id="logo"
                   alt="Love"
-                  width="15%"
-                  style="float: left; margin-top: 2%"
+                  width="70%"
+                  style="float: left; margin-top: 10%"
                 />
               </div>
-              <div class="col-3">
-                Playlist
-                <h3 class="p-3">Liked Songs</h3>
-                <!-- {{ display_name }} -->
+              <div class="col-9" style="margin-top: 2%">
+                <span>Playlist</span>
+                <h1 class="mt-4">Liked Songs</h1>
+                <span>{{ display_name }} &#x2022; {{ favorite_song }}</span>
               </div>
             </div>
           </div>

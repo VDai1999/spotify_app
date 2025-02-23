@@ -27,8 +27,13 @@ class ArtistAdmin(admin.ModelAdmin):
     list_display = ["artist", "uri", "genres", "num_of_followers", "popularity"]
 
 
+class FavoriteSongAdmin(admin.ModelAdmin):
+    list_display = ["user", "song", "added_at"]
+
+
 admin.site.register(User, UserAdmin)
 admin.site.register(Playlist, PlaylistAdmin)
 admin.site.register(Song, SongAdmin)
 admin.site.register(PlaylistSong, PlaylistSongAdmin)
 admin.site.register(Artist, ArtistAdmin)
+admin.site.register(FavoriteSong, FavoriteSongAdmin)
