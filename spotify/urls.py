@@ -18,5 +18,6 @@ urlpatterns = [
     path("notification", views.notification, name="notification"),
     path("library", views.library, name="library"),
     path("like_song", views.like_song, name="like_song"),
+    path("your_library", views.your_library, name="your_library"),
     path("logout", views.logout, name="logout"),
 ]

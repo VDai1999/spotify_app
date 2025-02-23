@@ -274,7 +274,6 @@ def like_song(request):
     favorite_song_info = retrieve_favorite_song(request)
     favorite_song_count = len(favorite_song_info)
     favorite_song_text = f"{favorite_song_count} song" if favorite_song_count == 1 else f"{favorite_song_count} songs"
-    print(favorite_song_info)
     
     # Render the like song page
     return render(request, 'like_song.html', {'display_name': display_name, 'favorite_song': favorite_song_text, "favorite_song_info": favorite_song_info}) 
@@ -302,3 +301,7 @@ def retrieve_favorite_song(request):
     ]
 
     return song_info
+
+def your_library(request):
+    # Render the home page
+    return render(request, 'your_library.html') 
