@@ -71,9 +71,22 @@ class User(models.Model):
         return self.user_name
     
 class Playlist(models.Model):
+    ARTIST = 'Artist'
+    PLAYLIST = 'Playlist'
+    AUDIOBOOK = 'Audiobook'
+    PODCAST = 'Podcast'
+
+    TAG_CHOICES = [
+        (ARTIST, 'Artist'),
+        (PLAYLIST, 'Playlist'),
+        (AUDIOBOOK, 'Audiobook'),
+        (PODCAST, 'Podcast'),
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
+    tag = models.CharField(max_length=50, choices=TAG_CHOICES, default=PLAYLIST)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -115,8 +128,7 @@ class PlaylistSong(models.Model):
     #     unique_together = ("playlist", "song")  # Ensures a song can only appear once per playlist
 
     def __str__(self):
-        return f"{self.song.title} in {self.playlist.name}"
-    
+        return f"{self.song.title} in {self.playlist.name}"  
 
 class Artist(models.Model):
     artist = models.CharField(max_length=255)
@@ -127,3 +139,14 @@ class Artist(models.Model):
 
     def __str__(self):
         return f"{self.artist}"
+
+class FavoriteSong(models.Model):
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='favorite_songs')
+    song = models.ForeignKey('Song', on_delete=models.CASCADE, related_name='favorited_by')
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'song')  # Ensures a user cannot favorite the same song multiple times
+
+    def __str__(self):
+        return f"{self.user.user_name} - {self.song.track_name}"

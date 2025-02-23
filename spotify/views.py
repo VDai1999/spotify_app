@@ -12,6 +12,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import auth
+from django.utils.timezone import localtime
 
 
 from urllib.parse import urlencode
@@ -23,7 +24,7 @@ import random
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials  # To access authorized Spotify data
 
-from .models import User, Song, Artist
+from .models import User, Song, Artist, FavoriteSong
 
 # Load keys from .env file
 load_dotenv() 
@@ -229,10 +230,10 @@ def notification(request):
 
     return render(request, 'notification.html', {'display_name': display_name})
 
-def library(request):
-    display_name = retrieve_display_name(request)
+# def library(request):
+#     display_name = retrieve_display_name(request)
     
-    return render(request, 'your_library.html', {'display_name': display_name})
+#     return render(request, 'your_library.html', {'display_name': display_name})
 
 @login_required(login_url='login')
 def logout(request):
@@ -267,3 +268,41 @@ def crawl_song_img_urls():
     profile_data = {re.sub(r'\(.*$', '', key): value for key, value in profile_data.items()}
 
     return profile_data
+
+def like_song(request):
+    display_name = retrieve_display_name(request)
+    favorite_song_info = retrieve_favorite_song(request)
+    favorite_song_count = len(favorite_song_info)
+    favorite_song_text = f"{favorite_song_count} song" if favorite_song_count == 1 else f"{favorite_song_count} songs"
+    
+    # Render the like song page
+    return render(request, 'like_song.html', {'display_name': display_name, 'favorite_song': favorite_song_text, "favorite_song_info": favorite_song_info}) 
+
+def retrieve_favorite_song(request):
+    # Retrieve credential info (either username or email of user)
+    credential = request.session.get('credential')
+
+    # Retrieve user
+    user = User.objects.filter(Q(user_name=credential) | Q(email=credential)).first()
+    
+    if not user:
+        return []
+
+    # Retrieve favorite songs with title and date added
+    favorite_songs = FavoriteSong.objects.filter(user=user).select_related('song')
+
+    # Format favorite song information
+    song_info = [
+        {
+            "title": fav.song.track_name,
+            "added_at": localtime(fav.added_at).strftime("%Y-%m-%d")  # Convert to readable format
+        }
+        for fav in favorite_songs
+    ]
+
+    return song_info
+
+def your_library(request):
+    display_name = retrieve_display_name(request)
+    # Render the home page
+    return render(request, 'your_library.html', {'display_name': display_name}) 

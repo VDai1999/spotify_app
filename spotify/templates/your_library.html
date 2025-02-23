@@ -17,7 +17,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+    />
     <link rel="stylesheet" href="{% static 'css/your_library.css' %}" />
   </head>
 
@@ -101,10 +104,12 @@
 
           <div class="border border-dark p-3 mb-3 rounded">
             <div class="mb-2">
-              <b
-                ><i class="fa-solid fa-music"></i> &nbsp; &nbsp; &nbsp; Your
-                Library</b
-              >
+              <a href="{% url 'your_library' %}">
+                <b>
+                  <i class="fa-solid fa-music text-white"></i> &nbsp; &nbsp;
+                  &nbsp; <span class="text-white">Your Library</span></b
+                >
+              </a>
             </div>
 
             <div>
@@ -125,20 +130,14 @@
           </div>
         </div>
 
-        <div
-          class="col-md-9"
-          style="color: white; background-color: #131212">
-          <div class="search-bar">
-            <input type="text" class="form-control" placeholder="Search in your library">
-            <i class="bi bi-search"></i>
-          </div>
-
-          <br>
+        <div class="col-md-9" style="color: white; background-color: #131212">
+          <br />
 
           <div>
-            <button>Playlist</button>
+            <button>Playlists</button>
             <button>Podcasts</button>
             <button>Artists</button>
+            <button>Audiobook</button>
           </div>
         </div>
       </div>
