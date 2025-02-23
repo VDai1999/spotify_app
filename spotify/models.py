@@ -71,9 +71,22 @@ class User(models.Model):
         return self.user_name
     
 class Playlist(models.Model):
+    ARTIST = 'Artist'
+    PLAYLIST = 'Playlist'
+    AUDIOBOOK = 'Audiobook'
+    PODCAST = 'Podcast'
+
+    TAG_CHOICES = [
+        (ARTIST, 'Artist'),
+        (PLAYLIST, 'Playlist'),
+        (AUDIOBOOK, 'Audiobook'),
+        (PODCAST, 'Podcast'),
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
+    tag = models.CharField(max_length=50, choices=TAG_CHOICES, default=PLAYLIST)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -7,7 +7,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class PlaylistAdmin(admin.ModelAdmin):
-    list_display = ["user", "name", "description", "created_at", "updated_at"]
+    list_display = ["user", "name", "description", "tag", "created_at", "updated_at"]
 
 
 class SongAdmin(admin.ModelAdmin):

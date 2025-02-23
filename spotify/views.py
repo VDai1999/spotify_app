@@ -230,10 +230,10 @@ def notification(request):
 
     return render(request, 'notification.html', {'display_name': display_name})
 
-def library(request):
-    display_name = retrieve_display_name(request)
+# def library(request):
+#     display_name = retrieve_display_name(request)
     
-    return render(request, 'your_library.html', {'display_name': display_name})
+#     return render(request, 'your_library.html', {'display_name': display_name})
 
 @login_required(login_url='login')
 def logout(request):
@@ -303,5 +303,6 @@ def retrieve_favorite_song(request):
     return song_info
 
 def your_library(request):
+    display_name = retrieve_display_name(request)
     # Render the home page
-    return render(request, 'your_library.html') 
+    return render(request, 'your_library.html', {'display_name': display_name}) 
