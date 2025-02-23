@@ -17,7 +17,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="stylesheet" href="{% static 'css/download_app.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/like_song.css' %}" />
   </head>
 
   <body>
@@ -143,6 +143,35 @@
                 <span>{{ display_name }} &#x2022; {{ favorite_song }}</span>
               </div>
             </div>
+
+            {% if favorite_songs != "0 song" %}
+            <div class="row" style="margin-top: 5%">
+              <div class="col-1">#</div>
+              <div class="col-8">Title</div>
+              <div class="col-3">Date added</div>
+            </div>
+            <hr />
+
+            {% for song in favorite_song_info %}
+            <div class="row song-row">
+              <div class="col-1">{{ forloop.counter }}</div>
+              <div class="col-8">{{ song.title }}</div>
+              <div class="col-3">{{ song.added_at }}</div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>
+              <h2>&#127925;</h2>
+              <h2>Song you liked will appear here</h2>
+            </p>
+            {% endif %}
+
+            <!-- <div class="row" style="margin-top: 5%">
+              <div class="col-1">#</div>
+              <div class="col-9">Title</div>
+              <div class="col-2">Date added</div>
+            </div>
+            <hr /> -->
           </div>
         </div>
       </div>

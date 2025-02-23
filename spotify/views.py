@@ -12,6 +12,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import auth
+from django.utils.timezone import localtime
 
 
 from urllib.parse import urlencode
@@ -270,10 +271,13 @@ def crawl_song_img_urls():
 
 def like_song(request):
     display_name = retrieve_display_name(request)
-    favorite_song_text = retrieve_favorite_song(request)
+    favorite_song_info = retrieve_favorite_song(request)
+    favorite_song_count = len(favorite_song_info)
+    favorite_song_text = f"{favorite_song_count} song" if favorite_song_count == 1 else f"{favorite_song_count} songs"
+    print(favorite_song_info)
     
     # Render the like song page
-    return render(request, 'like_song.html', {'display_name': display_name, 'favorite_song': favorite_song_text}) 
+    return render(request, 'like_song.html', {'display_name': display_name, 'favorite_song': favorite_song_text, "favorite_song_info": favorite_song_info}) 
 
 def retrieve_favorite_song(request):
     # Retrieve credential info (either username or email of user)
@@ -282,8 +286,19 @@ def retrieve_favorite_song(request):
     # Retrieve user
     user = User.objects.filter(Q(user_name=credential) | Q(email=credential)).first()
     
-    # Retrieve favorite songs
-    favorite_songs = FavoriteSong.objects.filter(user=user)
-    count_song = favorite_songs.count()
+    if not user:
+        return []
 
-    return f"{count_song} song" if count_song == 1 else f"{count_song} songs"
+    # Retrieve favorite songs with title and date added
+    favorite_songs = FavoriteSong.objects.filter(user=user).select_related('song')
+
+    # Format favorite song information
+    song_info = [
+        {
+            "title": fav.song.track_name,
+            "added_at": localtime(fav.added_at).strftime("%Y-%m-%d")  # Convert to readable format
+        }
+        for fav in favorite_songs
+    ]
+
+    return song_info
